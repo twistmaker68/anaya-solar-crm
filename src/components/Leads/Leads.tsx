@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Edit, Trash2, Mail, Phone, Search, Filter, MessageCircle, MapPin, Calendar } from 'lucide-react';
+import { Plus, Edit, Trash2, Mail, Phone, Search, Filter, MessageCircle, MapPin, Calendar, FileText } from 'lucide-react';
 import { db } from '../../lib/db';
 import type { Lead } from '../../types';
 import { Modal } from '../ui/Modal';
@@ -180,6 +180,11 @@ export function Leads() {
     }
   };
 
+  const handleCreateQuotation = (lead: Lead) => {
+    window.dispatchEvent(new CustomEvent('crm-create-quotation', { detail: lead }));
+    window.dispatchEvent(new CustomEvent('crm-navigate', { detail: { page: 'quotations' } }));
+  };
+
   const getStatusColor = (status: Lead['status']) => {
     const colors: Record<string, string> = {
       new: 'bg-blue-100 text-blue-700',
@@ -318,6 +323,13 @@ export function Leads() {
                       )}
                     </div>
                     <div className="flex items-center gap-2">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => handleCreateQuotation(lead)}
+                      >
+                        <FileText className="w-4 h-4" />
+                      </Button>
                       <Button
                         size="sm"
                         variant="ghost"

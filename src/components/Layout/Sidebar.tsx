@@ -8,6 +8,7 @@ import {
   Wrench,
   FileText,
   MessageCircle,
+  ShieldCheck,
   ChevronLeft,
   ChevronRight,
   Sun,
@@ -27,6 +28,8 @@ const menuItems = [
   { id: 'installations', label: 'Installations', icon: Wrench },
   { id: 'reports', label: 'Reports', icon: FileText },
   { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
+  { id: 'quotations', label: 'Quotations', icon: FileText },
+  { id: 'enterprise', label: 'Enterprise', icon: ShieldCheck },
 ];
 
 export function Sidebar({ currentPage, onNavigate }: SidebarProps) {
